@@ -26,7 +26,12 @@ const Login = () => {
   const [sendPasswordResetEmail, sending, resetPasswordError] =
     useSendPasswordResetEmail(auth);
 
-  const [signInWithGoogle, googleSignInUser, googleSignInLoading, googleSignInError] = useSignInWithGoogle(auth);
+  const [
+    signInWithGoogle,
+    googleSignInUser,
+    googleSignInLoading,
+    googleSignInError,
+  ] = useSignInWithGoogle(auth);
 
   const handleEmail = (e) => {
     const checkEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -88,11 +93,11 @@ const Login = () => {
       toastId: "resetPasswordError",
     });
   }
-  if (googleSignInError){
+  if (googleSignInError) {
     const message = googleSignInError.message;
     toast.error(message, {
-      toastId: "googleSignInError"
-    })
+      toastId: "googleSignInError",
+    });
   }
   return (
     <div className="form-container">
@@ -122,7 +127,7 @@ const Login = () => {
               id="password"
               required
             />
-            <p className="form-link mt-3" onClick={resetPassword}>
+            <p className="form-link mt-3 mb-0" onClick={resetPassword}>
               Forget Password?
             </p>
             {password.error && (
@@ -138,12 +143,18 @@ const Login = () => {
             </Link>
           </p>
 
-          <fieldset>
-            <legend>or</legend>
-          </fieldset>
+          <div className="d-flex align-items-center">
+            <div style={{ height: "1px" }} className="bg-secondary w-50"></div>
+            <p className="mt-2 px-2">Or</p>
+            <div style={{ height: "1px" }} className="bg-secondary w-50"></div>
+          </div>
           <ToastContainer />
         </form>
-        <button className="google-btn" type="submit" onClick={() => signInWithGoogle()}>
+        <button
+          className="google-btn"
+          type="submit"
+          onClick={() => signInWithGoogle()}
+        >
           <img src={googleLogo} alt="" /> Continue With Google
         </button>
       </div>

@@ -75,15 +75,3 @@ input{
   text-decoration: none;
   cursor: pointer;
 }
-.form-container fieldset {
-  border: 0;
-  border-top: 1px solid rgba(149, 160, 167, 1);
-}
-.form-container legend {
-  text-align: center;
-  color: rgba(149, 160, 167, 1);
-  padding-left: 30px;
-  padding-right: 30px;
-  font-size: 18px;
-  line-height: 50px;
-}

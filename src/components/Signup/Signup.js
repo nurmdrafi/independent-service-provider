@@ -109,7 +109,7 @@ const SignUp = () => {
       toastId: "updateError",
     });
   }
-  
+
   if (googleSignInError){
     const message = googleSignInError.message;
     toast.error(message, {
@@ -164,9 +164,11 @@ const SignUp = () => {
               Login
             </Link>
           </p>
-          <fieldset>
-            <legend>or</legend>
-          </fieldset>
+          <div className="d-flex align-items-center">
+            <div style={{ height: "1px" }} className="bg-secondary w-50"></div>
+            <p className="mt-2 px-2">Or</p>
+            <div style={{ height: "1px" }} className="bg-secondary w-50"></div>
+          </div>
           <ToastContainer />
         </form>
         <button className="google-btn" type="submit" onClick={() => signInWithGoogle()}>
