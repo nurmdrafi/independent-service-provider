@@ -3,12 +3,17 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleLogo from "../../images/google.svg";
 import auth from "../../../src/firebase.init";
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [email, setEmail] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
-  const [showError, setShowError] = useState(""); // Toast
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,7 +21,7 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, signInError] =
     useSignInWithEmailAndPassword(auth);
-    
+
   const [sendPasswordResetEmail, sending, resetPasswordError] =
     useSendPasswordResetEmail(auth);
 
@@ -51,27 +56,30 @@ const Login = () => {
   };
 
   const resetPassword = async () => {
-      await sendPasswordResetEmail(email);
-      alert('Sent email');
+    await sendPasswordResetEmail(email);
   };
 
   useEffect(() => {
-    user && navigate(from, { replace: true });  
+    user && navigate(from, { replace: true });
   }, [user, from, navigate]);
 
-  if(loading || sending){
-    return <p style={{fontSize: '50px'}}>Loading...</p>
-   }
-  
+  if (loading || sending) {
+    toast("Please Wait...", {
+      toastId: "loading or sending"
+    });
+  }
 
   if (signInError) {
-    console.log(signInError);
     const message = signInError.message;
-    if (message.includes("user-not-found")) {
-      setShowError("User Not Found");
-    } else if (message.includes("wrong-password")) {
-      setShowError("Wrong Password");
-    }
+    toast(message, {
+      toastId: "signInError"
+    });
+  }
+  if (resetPasswordError) {
+    const message = resetPasswordError.message;
+    toast(message, {
+      toastId: "resetPasswordError"
+    });
   }
   return (
     <div className="form-container">
@@ -87,9 +95,9 @@ const Login = () => {
               id="email"
               required
             />
-            {
-              email.error && <p style={{ color: "red", width: "415px" }}>{email.error}</p>
-            }
+            {email.error && (
+              <p style={{ color: "red", width: "415px" }}>{email.error}</p>
+            )}
           </div>
 
           <div className="input-group">
@@ -104,12 +112,9 @@ const Login = () => {
             <p className="form-link mt-3" onClick={resetPassword}>
               Forget Password?
             </p>
-            {
-              password.error && <p style={{ color: "red", width: "415px" }}>{password.error}</p>
-              }
-            {
-              showError && <p style={{ color: "red", width: "415px" }}>{showError}</p>
-            }
+            {password.error && (
+              <p style={{ color: "red", width: "415px" }}>{password.error}</p>
+            )}
           </div>
 
           <input className="form-submit" type="submit" value="Login" />
@@ -123,6 +128,7 @@ const Login = () => {
           <fieldset>
             <legend>or</legend>
           </fieldset>
+          <ToastContainer />
         </form>
         <button className="google-btn" type="submit">
           <img src={googleLogo} alt="" /> Continue With Google
