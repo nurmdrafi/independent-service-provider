@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import CustomLink from "../CustomLink/CustomLink";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from '../../firebase.init'
+import { signOut } from "firebase/auth";
 
 const Header = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">Rock Fitness</Navbar.Brand>
+        <Navbar.Brand>Rock Fitness</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
@@ -20,7 +21,7 @@ const Header = () => {
             <CustomLink to="/checkout">Checkout</CustomLink>
             <CustomLink to="/about">About</CustomLink>
             {user ? (
-              <button className="btn btn-dark">Log Out</button>
+              <button onClick={() => signOut(auth)} className="btn btn-dark">Log Out</button>
             ) : (
               <Link to="/login">
                 <button className="btn btn-dark">Log In</button>

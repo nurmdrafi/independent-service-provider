@@ -16,7 +16,7 @@ const SignUp = () => {
     value: "",
     error: "",
   });
-  const [showError, setShowError] = useState("");
+  const [showError, setShowError] = useState(""); // Toast
 
   const navigate = useNavigate();
 
@@ -29,7 +29,8 @@ const SignUp = () => {
   }
 
   const handleEmail = (e) => {
-    if(!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(e.target.value)){
+    const checkEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    if(!checkEmail.test(e.target.value)){
       setEmail({ value: "", error: "Please provide valid email." });  
     } else{
       setEmail({ value: e.target.value, error: "" });
@@ -37,7 +38,8 @@ const SignUp = () => {
   };
 
   const handlePassword = (e) => {
-      if(!/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(e.target.value)){
+    const checkPassword = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+      if(!checkPassword.test(e.target.value)){
       setPassword({ value: e.target.value, error: "Your password should contain at least one uppercase, one lowercase, one numeric, one special character and minimum 8 characters." });    
     } else{
       setPassword({ value: e.target.value, error: "" });
@@ -45,11 +47,11 @@ const SignUp = () => {
   };
 
   const handleConfirmPassword = (e) => {
-      if(password.value !== e.target.value){
-        setConfirmPassword({ value: "", error: "Your password did not match." });  
+      if(password.value === e.target.value){
+        setConfirmPassword({ value: e.target.value, error: "" });  
       }
        else{
-      setConfirmPassword({ value: e.target.value, error: "" });
+      setConfirmPassword({ value: "", error: "Your password did not match." });  
     }
     
   };
@@ -59,24 +61,24 @@ const SignUp = () => {
     if(name.value !== "" && email.value !== "" && password.value !== "" && password.value === confirmPassword.value){
       await createUserWithEmailAndPassword(email.value, password.value);
       await updateProfile({ displayName: name.value});
+      navigate('/home')
     }
   }
 
   useEffect(() =>{
-    if(user){
-      navigate('/login')
+    if(loading){
+      <p>Loading...</p>
     }
-
     if(error){
-
       const message = error.message;
       console.log(message);
       if(message.includes("/email-already-in-use")){
         setShowError("This email already in use")
       } 
     }
-  }, [user, error])
+  }, [user, error, loading, navigate])
 
+  console.log(user?.auth)
   return (
     <div className="form-container">
       <div>

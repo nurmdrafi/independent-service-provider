@@ -32,6 +32,8 @@
   font-size: 24px;
   border: 1px solid rgba(149, 160, 167, 1);
   outline: none;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 input{
   border-radius: 15px 50px !important;
@@ -72,12 +74,13 @@ input{
 .form-link {
   color: rgba(255, 153, 0, 1);
   text-decoration: none;
+  cursor: pointer;
 }
-fieldset {
+.form-container fieldset {
   border: 0;
   border-top: 1px solid rgba(149, 160, 167, 1);
 }
-legend {
+.form-container legend {
   text-align: center;
   color: rgba(149, 160, 167, 1);
   padding-left: 30px;
