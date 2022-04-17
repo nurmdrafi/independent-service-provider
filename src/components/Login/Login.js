@@ -6,6 +6,7 @@ import auth from "../../../src/firebase.init";
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -24,6 +25,8 @@ const Login = () => {
 
   const [sendPasswordResetEmail, sending, resetPasswordError] =
     useSendPasswordResetEmail(auth);
+
+  const [signInWithGoogle, googleSignInUser, googleSignInLoading, googleSignInError] = useSignInWithGoogle(auth);
 
   const handleEmail = (e) => {
     const checkEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -52,6 +55,10 @@ const Login = () => {
     e.preventDefault();
     if (email.value !== "" && password.value !== "") {
       signInWithEmailAndPassword(email.value, password.value);
+    } else if (email.value === "" || password.value === "") {
+      toast.error("Empty Field Is Not Allow", {
+        toastId: "Empty field",
+      });
     }
   };
 
@@ -63,23 +70,29 @@ const Login = () => {
     user && navigate(from, { replace: true });
   }, [user, from, navigate]);
 
-  if (loading || sending) {
-    toast("Please Wait...", {
-      toastId: "loading or sending"
+  if (loading || sending || googleSignInLoading) {
+    toast.success("Please Wait...", {
+      toastId: "loading or sending",
     });
   }
 
   if (signInError) {
     const message = signInError.message;
-    toast(message, {
-      toastId: "signInError"
+    toast.error(message, {
+      toastId: "signInError",
     });
   }
   if (resetPasswordError) {
     const message = resetPasswordError.message;
-    toast(message, {
-      toastId: "resetPasswordError"
+    toast.error(message, {
+      toastId: "resetPasswordError",
     });
+  }
+  if (googleSignInError){
+    const message = googleSignInError.message;
+    toast.error(message, {
+      toastId: "googleSignInError"
+    })
   }
   return (
     <div className="form-container">
@@ -118,7 +131,7 @@ const Login = () => {
           </div>
 
           <input className="form-submit" type="submit" value="Login" />
-          <p className="my-3">
+          <p className="mt-3 text-center">
             Not a member?{" "}
             <Link className="form-link" to="/signup">
               Sign Up Now
@@ -130,7 +143,7 @@ const Login = () => {
           </fieldset>
           <ToastContainer />
         </form>
-        <button className="google-btn" type="submit">
+        <button className="google-btn" type="submit" onClick={() => signInWithGoogle()}>
           <img src={googleLogo} alt="" /> Continue With Google
         </button>
       </div>

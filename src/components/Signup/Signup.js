@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import googleLogo from "../../images/google.svg";
 
 import auth from "../../firebase.init";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -25,6 +25,8 @@ const SignUp = () => {
     useCreateUserWithEmailAndPassword(auth);
   // const [ createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  const [signInWithGoogle, googleSignInUser, googleSignInLoading, googleSignInError] = useSignInWithGoogle(auth);
 
   const handleName = (e) => {
     setName({ value: e.target.value, error: "" });
@@ -71,31 +73,47 @@ const SignUp = () => {
     ) {
       await createUserWithEmailAndPassword(email.value, password.value);
       await updateProfile({ displayName: name.value });
+    } else if (
+      name.value === "" ||
+      email.value === "" ||
+      password.value === "" ||
+      confirmPassword.value === ""
+    ) {
+      toast.error("Empty Field Is Not Allow", {
+        toastId: "Empty field",
+      });
     }
   };
-  
+
   useEffect(() => {
     if (user) {
       navigate("/home");
     }
   }, [user, navigate]);
 
-  if(loading || updating){
-    toast("Please Wait...", {
-      toastId: "loading or updating"
-    })
+  if (loading || updating || googleSignInLoading) {
+    toast.success("Please Wait...", {
+      toastId: "loading or updating",
+    });
   }
 
   if (createUserError) {
     const message = createUserError.message;
     toast.error(message, {
-      toastId: "createUserError"
+      toastId: "createUserError",
     });
   }
-  if(updateError){
+  if (updateError) {
     const message = updateError.message;
     toast.error(message, {
-      toastId: "updateError"
+      toastId: "updateError",
+    });
+  }
+  
+  if (googleSignInError){
+    const message = googleSignInError.message;
+    toast.error(message, {
+      toastId: "googleSignInError"
     })
   }
   return (
@@ -105,26 +123,14 @@ const SignUp = () => {
         <form onSubmit={handleUserSignUp}>
           <div className="input-group">
             <label htmlFor="name">Name</label>
-            <input
-              onBlur={handleName}
-              type="text"
-              name="name"
-              id="name"
-              required
-            />
-            <p style={{ color: "red", width: "415px" }}>{name.error}</p>
+            <input onBlur={handleName} type="text" name="name" id="name" />
+            {name.error && <p style={{ color: "red", width: "415px" }}>{name.error}</p>}
           </div>
 
           <div className="input-group">
             <label htmlFor="email">Email</label>
-            <input
-              onBlur={handleEmail}
-              type="email"
-              name="email"
-              id="email"
-              required
-            />
-            <p style={{ color: "red", width: "415px" }}>{email.error}</p>
+            <input onBlur={handleEmail} type="email" name="email" id="email" />
+            {email.error && <p style={{ color: "red", width: "415px" }}>{email.error}</p>}
           </div>
           <div className="input-group">
             <label htmlFor="password">Password</label>
@@ -133,9 +139,9 @@ const SignUp = () => {
               type="password"
               name="password"
               id="password"
-              required
             />
-            <p style={{ color: "red", width: "415px" }}>{password.error}</p>
+            {password.error && <p style={{ color: "red", width: "415px" }}>{password.error}</p>}
+
           </div>
           <div className="input-group">
             <label htmlFor="confirm-password">Confirm Password</label>
@@ -144,13 +150,14 @@ const SignUp = () => {
               type="password"
               name="confirm-password"
               id="confirm-password"
-              required
             />
-            <p style={{ color: "red", width: "415px" }}>
-              {confirmPassword.error}
-            </p>
+            {confirmPassword.error && (
+              <p style={{ color: "red", width: "415px" }}>
+                {confirmPassword.error}
+              </p>
+            )}
           </div>
-          <input className="form-submit" type="submit" value="Sign Up" />
+          <input className="form-submit mt-3" type="submit" value="Sign Up" />
           <p className="text-center my-3">
             Already have an account?{" "}
             <Link className="form-link" to="/login">
@@ -162,7 +169,7 @@ const SignUp = () => {
           </fieldset>
           <ToastContainer />
         </form>
-        <button className="google-btn" type="submit">
+        <button className="google-btn" type="submit" onClick={() => signInWithGoogle()}>
           <img src={googleLogo} alt="" /> Continue With Google
         </button>
       </div>
