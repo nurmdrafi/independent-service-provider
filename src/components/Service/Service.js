@@ -18,7 +18,7 @@ const {id, name, price, time, image, description} = service;
             <h1 className='fw-bold'>{price}<span className='fw-lighter'>/</span><small className='fw-light'>{time}</small></h1>
             <p className="card-text">{description}</p>
           </div>
-        <button className='service-btn' onClick={() => navigateToCheckOut(id)}>Order Now</button>
+        <button className='service-btn' onClick={() => navigateToCheckOut(id)}>Book Now</button>
         </div>
       </div>
     );

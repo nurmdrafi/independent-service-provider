@@ -28,7 +28,7 @@ const Checkout = () => {
         toast.error("Empty Field Is Not Allow");
     } else if
     (name && email && phone) {
-        toast.success("Success");
+        toast.success("Thank You For The Booking");
         toast.info("Please Wait");
         setTimeout(() => {
             navigate("/home")
@@ -39,7 +39,7 @@ const Checkout = () => {
   return (
     <div className="form-container">
       <div>
-        <h2 className="form-title">Check Out</h2>
+        <h2 className="form-title">Book Now</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="name">Name</label>

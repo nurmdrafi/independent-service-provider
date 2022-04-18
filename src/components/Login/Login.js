@@ -21,7 +21,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   const [signInWithEmailAndPassword, user, loading, signInError] =
-    useSignInWithEmailAndPassword(auth);
+    useSignInWithEmailAndPassword(auth, {sendEmailVerification: true});
 
   const [sendPasswordResetEmail, sending, resetPasswordError] =
     useSendPasswordResetEmail(auth);
@@ -64,7 +64,8 @@ const Login = () => {
   };
 
   const resetPassword = async () => {
-    await sendPasswordResetEmail(email);
+    console.log(typeof email)
+    await sendPasswordResetEmail(email.value);
   };
 
   useEffect(() => {

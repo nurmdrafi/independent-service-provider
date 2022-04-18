@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import Banner from "../Banner/Banner";
 import Service from "../Service/Service";
+import Contact from "../Contact/Contact";
 import useServices from "../../hooks/useServices";
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
           ))}
         </div>
       </section>
+      <Contact></Contact>
     </div>
   );
 };

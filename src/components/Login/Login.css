@@ -14,7 +14,8 @@
   font-size: 35px;
   text-align: center;
   color: #2a414f;
-  font-weight: 400;
+  font-weight: 600;
+  margin: 15px auto;
 }
 .input-group {
   margin-bottom: 20px;
@@ -26,7 +27,7 @@
   margin-left: 5px;
   margin-bottom: 5px;
 }
-.input-group input {
+.input-group input{
   width: 415px;
   height: 55px;
   font-size: 24px;
@@ -35,7 +36,13 @@
   padding-left: 10%;
   padding-right: 10%;
 }
-input{
+.input-group textarea{
+  outline: none;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 18px;
+}
+input, textarea{
   border-radius: 15px 50px !important;
 }
 .form-submit {
