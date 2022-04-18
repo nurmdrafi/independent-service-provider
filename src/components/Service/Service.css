@@ -1,0 +1,30 @@
+
+.card{
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to right bottom, #2d2e83, #1d71b8);
+    border-image-slice: 1;
+    
+}
+.service-img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.service-btn{
+    min-width: 200px;
+    margin:10px auto;
+    padding: 10px;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to right bottom, #1d71b8, #2d2e83);
+    border-image-slice: 1;
+    font-weight: bold;
+    color: black;
+}
+.service-btn:hover{
+    color:white;
+    background: linear-gradient(to right bottom, #1d71b8, #2d2e83);;
+}

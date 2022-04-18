@@ -14,7 +14,7 @@ const Blogs = () => {
           resource.
           <b> Authentication</b> confirms that users are who they say they are.
         </p>
-        <table class="table table-striped">
+        <table className="table table-striped">
           <thead>
             <tr>
               <th scope="col" style={{ width: "1%" }}>
