@@ -1,5 +1,5 @@
 .form-container {
-  width: 500px;
+  max-width: 500px;
   height: fit-content;
   padding-bottom: 40px;
   border: 1px solid #95a0a7;
@@ -28,7 +28,7 @@
   margin-bottom: 5px;
 }
 .input-group input{
-  width: 415px;
+  max-width: 415px;
   height: 55px;
   font-size: 24px;
   border: 1px solid rgba(149, 160, 167, 1);
@@ -37,6 +37,7 @@
   padding-right: 10%;
 }
 .input-group textarea{
+  max-width: 415px;
   outline: none;
   padding-left: 10%;
   padding-right: 10%;

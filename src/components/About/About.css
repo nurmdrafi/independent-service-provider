@@ -1,0 +1,12 @@
+.about{
+    min-height: calc(100vh - 250px);
+}
+.profile-pic{
+    width: 150px;
+    height: 150px;
+    margin: 10px auto;
+}
+.profile-pic img{
+    width: 100%;
+    /* height: 100%; */
+}

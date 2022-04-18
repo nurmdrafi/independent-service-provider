@@ -64,8 +64,19 @@ const Login = () => {
   };
 
   const resetPassword = async () => {
-    console.log(typeof email)
-    await sendPasswordResetEmail(email.value);
+    if(email.value === ""){
+      toast.warning("Please Insert Email", {
+        toastId: "emptyEmail",
+      });
+    } else if(email.value){
+      await sendPasswordResetEmail(email.value);
+      toast.info("Check Your Email Box", {
+        toastId: "checkEmailBox",
+      });
+    }
+    
+    
+
   };
 
   useEffect(() => {

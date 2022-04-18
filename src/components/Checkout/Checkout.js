@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './Checkout.css'
 import { useNavigate, useParams } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -38,7 +39,7 @@ const Checkout = () => {
 
   return (
     <div className="form-container">
-      <div>
+      <div className="checkout">
         <h2 className="form-title">Book Now</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
