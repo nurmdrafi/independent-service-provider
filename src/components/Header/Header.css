@@ -9,3 +9,15 @@
   -webkit-text-fill-color: transparent;
   cursor: pointer;
 }
+.access-btn{
+  width: 120px;
+  height: 50px;
+  margin: 10px;
+  background: -webkit-linear-gradient(#1d71b8, #2d2e83);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px ;
+  color: white;
+  border-radius: 15px 50px !important;
+}
+.access-btn:hover{
+  color: white;
+}

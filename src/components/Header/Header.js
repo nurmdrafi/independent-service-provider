@@ -24,10 +24,10 @@ const Header = () => {
             <CustomLink to="/checkout">Checkout</CustomLink>
             <CustomLink to="/about">About</CustomLink>
             {user ? (
-              <button onClick={() => signOut(auth)} className="btn btn-dark fs-5 fw-bold">Log Out</button>
+              <button onClick={() => signOut(auth)} className="access-btn fs-5 fw-bold">Log Out</button>
             ) : (
               <Link to="/login">
-                <button className="btn btn-dark fs-5 fw-bold">Log In</button>
+                <button className="access-btn btn fs-5 fw-bold">Log In</button>
               </Link>
             )}
           </Nav>
