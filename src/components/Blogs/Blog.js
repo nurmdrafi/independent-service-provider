@@ -3,7 +3,7 @@ import React from "react";
 const Blogs = () => {
   return (
     <div className="container fs-4">
-      <h1 className="text-center">Blogs</h1>
+      <h1 className="heading">Blogs</h1>
       <div className="my-4">
         <h1 className="text-primary opacity-75 my-4">
           Difference between authorization and authentication.

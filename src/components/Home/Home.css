@@ -1,3 +1,8 @@
-.heading{
-    text-align: center;
+.heading {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 900;
+  margin: 30px auto;
+  letter-spacing: 3px;
+  font-family: "Cinzel", serif;
 }

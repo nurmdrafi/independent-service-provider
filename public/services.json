@@ -4,7 +4,7 @@
     "name": "PERSONAL TRAINING",
     "price": "$300",
     "time": "month",
-    "image": "https://dummyimage.com/300/09f/fff.png",
+    "image": "https://www.gqindia.com/wp-content/uploads/2016/06/GQ-India-a-lister-fitness-dwayne-the-rock.jpg",
     "description": "Are you new or not confident in the gym and need more support to get started? Do you want to get the most out of your time in the gym? Do you want a done for your service where you don't have to think about anything? If you are willing to turn up, work hard and do your best, then Personal Training is ideal your you! I'll be the concierge in charge of your health and well-being."
   },
   {
@@ -12,7 +12,7 @@
     "name": "HYBRID TRAINING",
     "price": "$250",
     "time": "month",
-    "image": "https://dummyimage.com/300/09f/fff.png",
+    "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sbc-190506-b1-ss19-pb-djprojectrock-s04-1111-redheadphones-3-1565278508.jpg",
     "description": "Do you already train in the gym but you feel you need support and clear direction with your training and nutrition? Maybe you need accountability and an expert to help you achieve results. Hybrid Training combines all the benefits of Online and Personal Training. In between our bi-weekly sessions, you choose the location and the time of your workouts to best suit your schedule and lifestyle."
   },
   {
@@ -20,7 +20,7 @@
     "name": "ONLINE TRAINING",
     "price": "$200",
     "time": "month",
-    "image": "https://dummyimage.com/300/09f/fff.png",
+    "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cq5dam-ss20-trn-projrock-dj-z6a2771-scrn-v-0-1585578400.jpeg",
     "description": "Online training is ideal for you if you ar either experienced or confident in the gym, or happy to train hard on your own. If you need a personalized training plan, individualized to you, with expert advice, to achieve the results you crave, this package is for you! It's the easiest, most cost-effective and convenient way to work with me via the coaching app. You can work out anywhere, anytime."
   }
 ]

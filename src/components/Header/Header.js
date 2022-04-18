@@ -21,8 +21,8 @@ const Header = () => {
           <Nav className="ms-auto d-flex align-items-center">
             <CustomLink to="/home">Home</CustomLink>
             <CustomLink to="/blogs">Blogs</CustomLink>
-            <CustomLink to="/checkout">Checkout</CustomLink>
             <CustomLink to="/about">About</CustomLink>
+            <CustomLink to="/checkout">Checkout</CustomLink>
             {user ? (
               <button onClick={() => signOut(auth)} className="access-btn fs-5 fw-bold">Log Out</button>
             ) : (
