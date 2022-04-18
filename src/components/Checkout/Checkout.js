@@ -37,6 +37,7 @@ const Checkout = () => {
     }
   };
 
+
   return (
     <div className="form-container">
       <div className="checkout">

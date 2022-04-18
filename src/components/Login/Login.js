@@ -75,13 +75,17 @@ const Login = () => {
       });
     }
     
-    
-
   };
+  const handleGoogleSignIn = () =>{
+    signInWithGoogle();
+    navigate('/home')
+  }
 
   useEffect(() => {
-    user && navigate(from, { replace: true });
-  }, [user, from, navigate]);
+    if(user || googleSignInUser){
+      navigate(from, { replace: true });
+    }
+  }, [user, googleSignInUser, from, navigate]);
 
   if (loading || sending || googleSignInLoading) {
     toast.success("Please Wait...", {
@@ -161,7 +165,7 @@ const Login = () => {
         <button
           className="google-btn"
           type="submit"
-          onClick={() => signInWithGoogle()}
+          onClick={handleGoogleSignIn}
         >
           <img src={googleLogo} alt="" /> Continue With Google
         </button>

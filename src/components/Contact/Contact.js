@@ -8,10 +8,10 @@ const Contact = () => {
   return (
     <div className="contact">
       <h1 className="heading text-white pt-5">Contact</h1>
-      <div className="form-container">
+      <div className="form-container border-0">
         <div>
           <form className="">
-            <div className="input-group mt-5">
+            <div className="input-group">
               <label htmlFor="name" className="text-white">Name</label>
               <input type="text" name="name" id="name"  />
             </div>
