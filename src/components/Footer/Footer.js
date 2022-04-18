@@ -6,8 +6,8 @@ import { IoLogoYoutube } from "react-icons/io";
 
 const Footer = () => {
   return (
-    <div className="container footer d-flex flex-column justify-content-center mt-auto mb-2">
-      <div className="social-links d-flex justify-content-center my-3">
+    <div className="container footer d-flex flex-column justify-content-center mt-auto">
+      <div className="social-links d-flex justify-content-center">
         <a target="blank" href="https://www.tiktok.com/@therock">
           <SiTiktok></SiTiktok>
         </a>
@@ -26,7 +26,7 @@ const Footer = () => {
       </div>
       <div className="text-center text-muted fw-bold">
         <p>
-          All Rights Reserved By{" "}
+          All Rights Reserved By &copy;{" "}
           <span className="brand" style={{ fontSize: "18px" }}>
             ROCK FITNESS
           </span>{" "}

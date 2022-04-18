@@ -11,7 +11,7 @@ const Header = () => {
   const [user] = useAuthState(auth);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" >
       <Container>
         <Navbar.Brand>
           <Link to="/home" className="brand">Rock Fitness</Link>

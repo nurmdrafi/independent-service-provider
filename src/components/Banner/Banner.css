@@ -1,0 +1,10 @@
+/* import Banner1 from '../../images/banner1.jpg'
+import Banner2 from '../../images/banner2.jpg' */
+.banner {
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background: rgba(0, 0, 0, 0.5) url("../../images/banner1.jpg");
+  background-blend-mode: darken;
+  background-position: top;
+  background-size: cover;
+}
