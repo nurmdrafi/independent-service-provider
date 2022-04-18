@@ -14,7 +14,7 @@ const Header = () => {
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand>
-          <Link to="/home" className="website-name">Rock Fitness</Link>
+          <Link to="/home" className="brand">Rock Fitness</Link>
           </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
