@@ -1,1 +1,15 @@
-
+.default-link {
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.active-link {
+  background: -webkit-linear-gradient(#2d2e83, #1d71b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 20px;
+}

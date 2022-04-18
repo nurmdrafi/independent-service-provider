@@ -1,0 +1,10 @@
+.website-name {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-family: 'Cinzel', serif;
+  text-decoration: none;
+  background: -webkit-linear-gradient(#1d71b8, #2d2e83);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

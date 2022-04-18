@@ -1,4 +1,5 @@
 import React from "react";
+import './Header.css'
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CustomLink from "../CustomLink/CustomLink";
@@ -12,10 +13,12 @@ const Header = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand>Rock Fitness</Navbar.Brand>
+        <Navbar.Brand>
+          <Link to="/home" className="website-name">Rock Fitness</Link>
+          </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
+          <Nav className="ms-auto d-flex align-items-center">
             <CustomLink to="/home">Home</CustomLink>
             <CustomLink to="/blogs">Blogs</CustomLink>
             <CustomLink to="/checkout">Checkout</CustomLink>
