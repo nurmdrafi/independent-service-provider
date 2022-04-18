@@ -73,16 +73,7 @@ const SignUp = () => {
     ) {
       await createUserWithEmailAndPassword(email.value, password.value);
       await updateProfile({ displayName: name.value });
-    } else if (
-      name.value === "" ||
-      email.value === "" ||
-      password.value === "" ||
-      confirmPassword.value === ""
-    ) {
-      toast.error("Empty Field Is Not Allow", {
-        toastId: "Empty field",
-      });
-    }
+    } 
   };
 
   useEffect(() => {
@@ -123,7 +114,7 @@ const SignUp = () => {
         <form onSubmit={handleUserSignUp}>
           <div className="input-group">
             <label htmlFor="name">Name</label>
-            <input onBlur={handleName} type="text" name="name" id="name" />
+            <input onBlur={handleName} type="text" name="name" id="name" required />
             {name.error && <p style={{ color: "red", width: "415px" }}>{name.error}</p>}
           </div>
 
@@ -139,6 +130,7 @@ const SignUp = () => {
               type="password"
               name="password"
               id="password"
+              required
             />
             {password.error && <p style={{ color: "red", width: "415px" }}>{password.error}</p>}
 
@@ -150,6 +142,7 @@ const SignUp = () => {
               type="password"
               name="confirm-password"
               id="confirm-password"
+              required
             />
             {confirmPassword.error && (
               <p style={{ color: "red", width: "415px" }}>
@@ -157,11 +150,11 @@ const SignUp = () => {
               </p>
             )}
           </div>
-          <input className="form-submit mt-3" type="submit" value="Sign Up" />
+          <input className="form-submit mt-3 fs-5 fw-bold" type="submit" value="Sign Up" />
           <p className="text-center my-3">
             Already have an account?{" "}
             <Link className="form-link" to="/login">
-              Login
+              Log In
             </Link>
           </p>
           <div className="d-flex align-items-center">

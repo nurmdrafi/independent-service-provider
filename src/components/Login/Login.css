@@ -41,7 +41,9 @@ input{
 .form-submit {
   width: 420px;
   height: 55px;
-  background-color: rgba(255, 153, 0, 0.3);
+  background: -webkit-linear-gradient(#1d71b8, #2d2e83);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px ;
+  color: white;
   border: none;
   font-size: 20px;
   cursor: pointer;

@@ -60,10 +60,6 @@ const Login = () => {
     e.preventDefault();
     if (email.value !== "" && password.value !== "") {
       signInWithEmailAndPassword(email.value, password.value);
-    } else if (email.value === "" || password.value === "") {
-      toast.error("Empty Field Is Not Allow", {
-        toastId: "Empty field",
-      });
     }
   };
 
@@ -102,7 +98,7 @@ const Login = () => {
   return (
     <div className="form-container">
       <div>
-        <h2 className="form-title">Login</h2>
+        <h2 className="form-title">Log In</h2>
         <form onClick={handleUserLogIn}>
           <div className="input-group">
             <label htmlFor="email">Email</label>
@@ -135,7 +131,7 @@ const Login = () => {
             )}
           </div>
 
-          <input className="form-submit" type="submit" value="Login" />
+          <input className="form-submit fs-5 fw-bold" type="submit" value="Log In" />
           <p className="mt-3 text-center">
             Not a member?{" "}
             <Link className="form-link" to="/signup">
